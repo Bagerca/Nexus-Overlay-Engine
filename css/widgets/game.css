@@ -1,0 +1,24 @@
+.cover-panel { background: linear-gradient(160deg, #161824, #0b0c12); display: flex; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.mode-vertical #cover-layout-horizontal { display: none; }
+.mode-horizontal #cover-layout-vertical { display: none; }
+
+.cover-layout-vertical { display: flex; width: 100%; height: 100%; gap: 20px; align-items: center; padding: 20px; animation: fadeIn 0.4s ease-out; }
+.game-cover-wrapper { flex-shrink: 0; width: 160px; height: 236px; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); border: 1px solid var(--border-light); overflow: hidden; }
+.game-img-vert { width: 100%; height: 100%; object-fit: cover; }
+.game-info { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; height: 100%; }
+.game-title { font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 12px; line-height: 1.1; letter-spacing: -0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.game-stats-list { display: flex; flex-direction: column; width: 100%; }
+.stat-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-light); }
+.stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+.stat-label { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.stat-value { font-size: 14px; font-weight: 700; color: var(--text-main); text-align: right; max-width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rating-value { color: var(--accent-yellow); }
+.stat-value.badge { background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); padding: 4px 8px; border-radius: 6px; font-size: 12px; color: #ddd; }
+
+.cover-layout-horizontal { width: 100%; height: 100%; position: relative; animation: fadeIn 0.4s ease-out; }
+.game-img-horiz { width: 100%; height: 100%; object-fit: cover; }
+.horiz-gradient { position: absolute; bottom: 0; left: 0; width: 100%; height: 70%; background: linear-gradient(to top, rgba(11, 12, 18, 0.95) 0%, rgba(11, 12, 18, 0) 100%); }
+.horiz-info { position: absolute; bottom: 15px; left: 20px; right: 20px; }
+.horiz-title { font-size: 26px; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }

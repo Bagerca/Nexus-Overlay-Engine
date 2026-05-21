@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Overlay - Pro Architecture</title>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const widget = urlParams.get('widget');
+        if (widget) {
+            document.documentElement.classList.add('widget-mode');
+            document.documentElement.setAttribute('data-widget', widget);
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Базовые стили -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Модульные стили виджетов -->
+    <link rel="stylesheet" href="css/widgets/core.css">
+    <link rel="stylesheet" href="css/widgets/chat.css">
+    <link rel="stylesheet" href="css/widgets/player.css">
+    <link rel="stylesheet" href="css/widgets/game.css">
+</head>
+<body>
+
+    <!-- СЕКРЕТНОЕ ЯДРО -->
+    <div id="core-audio-engine">
+        <div id="yt-player"></div>
+    </div>
+
+    <!-- ВИЗУАЛЬНЫЙ ОВЕРЛЕЙ -->
+    <main class="overlay-root">
+        
+        <canvas id="bg-canvas" class="background-canvas"></canvas>
+
+        <div class="panel game-panel" id="widget-frame">
+            <div class="placeholder-text">[ ИГРА В OBS (1440x810) ]</div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="panel cover-panel mode-vertical" id="widget-gameinfo">
+                <div class="cover-layout-vertical" id="cover-layout-vertical">
+                    <div class="game-cover-wrapper"><img id="game-cover-vert" src="assets/covers/default-vert.svg" class="game-img-vert" alt="Cover"></div>
+                    <div class="game-info">
+                        <h2 class="game-title" id="game-title">Неизвестно</h2>
+                        <div class="game-stats-list">
+                            <div class="stat-row"><span class="stat-label">Рейтинг:</span><span class="stat-value rating-value" id="game-rating">0.0 / 10</span></div>
+                            <div class="stat-row"><span class="stat-label">Год:</span><span class="stat-value" id="game-year">202X</span></div>
+                            <div class="stat-row"><span class="stat-label">Жанр:</span><span class="stat-value" id="game-genre">Ожидание</span></div>
+                            <div class="stat-row"><span class="stat-label">Разраб:</span><span class="stat-value" id="game-dev">Студия</span></div>
+                            <div class="stat-row"><span class="stat-label">Платформа:</span><span class="stat-value badge" id="game-platform">N/A</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cover-layout-horizontal" id="cover-layout-horizontal">
+                    <img id="game-cover-horiz" src="assets/covers/default-horiz.svg" class="game-img-horiz" alt="Cover">
+                    <div class="horiz-gradient"></div>
+                    <div class="horiz-info"><h2 class="horiz-title" id="horiz-title">Неизвестно</h2></div>
+                </div>
+            </div>
+
+            <div class="panel chat-panel" id="widget-chat">
+                <header class="panel-header"><span class="header-dot"></span> LIVE CHAT</header>
+                <div id="chat-music-info" class="hidden">
+                    <div class="music-info-left">
+                        <div class="music-avatar-box">
+                            <img src="" id="music-req-avatar" class="music-avatar" alt="av">
+                            <div class="music-playing-indicator"><span></span><span></span><span></span></div>
+                        </div>
+                        <div class="music-user-block">
+                            <span class="music-label">Сейчас играет трек от:</span>
+                            <span id="requester-name" class="music-username">Viewer</span>
+                        </div>
+                    </div>
+                    <div class="music-info-right">
+                        <div class="volume-pill">
+                            <svg class="vol-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                            <div class="vol-track"><div id="vol-bar-visual" class="vol-fill" style="width: 20%;"></div></div>
+                            <div class="vol-text"><span id="volume-level">20</span><span class="vol-percent">%</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chat-messages"></div>
+            </div>
+        </aside>
+
+        <footer class="bottom-bar">
+            <div class="panel player-panel" id="widget-player">
+                <div class="player-idle-view" id="player-idle">
+                    <div class="idle-icon-box">
+                        <svg class="idle-icon" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                        <div class="idle-pulse-ring"></div>
+                    </div>
+                    <div class="idle-text-block">
+                        <span class="idle-title">Плеер ожидает трек</span>
+                        <span class="idle-cmd">!sr [ссылка или ID]</span>
+                    </div>
+                </div>
+                <div id="widget-container" class="hidden">
+                    <div id="player-wrapper">
+                        <!-- ВИЗУАЛЬНЫЙ КЛОН ПЛЕЕРА -->
+                        <div id="visual-yt-player"></div>
+                        <div id="yt-progress-container"><div id="yt-progress-bar"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel alerts-panel" id="widget-alerts">
+                <div class="placeholder-text">[ Место для алертов ]</div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+    <script src="js/config.js"></script>
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

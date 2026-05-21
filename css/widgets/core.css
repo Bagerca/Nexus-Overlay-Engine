@@ -1,0 +1,33 @@
+/* ==========================================================
+   СИСТЕМНОЕ ЯДРО (Полностью невидимо)
+   ========================================================== */
+html[data-widget="core"] body { background: transparent !important; }
+html[data-widget="core"] .overlay-root { display: none !important; }
+#core-audio-engine { position: absolute; top: -9999px; left: -9999px; opacity: 0.01; }
+
+/* ==========================================================
+   РЕЖИМ ВИДЖЕТОВ В OBS (1920x1080)
+   ========================================================== */
+html.widget-mode body { background: transparent !important; }
+
+/* Прячем ВСЁ по умолчанию */
+html.widget-mode .panel,
+html.widget-mode .background-canvas { 
+    visibility: hidden !important; 
+    pointer-events: none !important; 
+}
+
+/* Точечно включаем видимость нужного блока */
+html[data-widget="player"] #widget-player { visibility: visible !important; pointer-events: auto !important; }
+html[data-widget="chat"] #widget-chat { visibility: visible !important; pointer-events: auto !important; }
+html[data-widget="gameinfo"] #widget-gameinfo { visibility: visible !important; pointer-events: auto !important; }
+html[data-widget="frame"] #widget-frame { visibility: visible !important; pointer-events: auto !important; }
+html[data-widget="frame"] .placeholder-text { display: none !important; }
+html[data-widget="alerts"] #widget-alerts { visibility: visible !important; pointer-events: auto !important; }
+
+/* ЧАСТИЦЫ: Гарантируем их работу и видимость */
+html[data-widget="bg"] .background-canvas { 
+    visibility: visible !important; 
+    opacity: 0.6 !important;
+    display: block !important;
+}

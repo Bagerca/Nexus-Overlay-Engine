@@ -1,0 +1,41 @@
+:root {
+    /* Цветовая палитра "VK Play Style" */
+    --bg-main: #05050A;       /* Самый темный фон сцены */
+    --bg-panel: #11121A;      /* Фон самих блоков */
+    --bg-panel-light: #1A1C26; /* Светлый фон для плашек */
+    
+    --border-color: #212336;  /* Цвет рамок */
+    --border-light: rgba(255, 255, 255, 0.08); /* Тонкая рамка для списков */
+    
+    --accent-blue: #00AAFF;   /* Сочный синий */
+    --accent-yellow: #FFC800; /* Желтый цвет для рейтинга */
+    --accent-glow: rgba(0, 170, 255, 0.4); /* Свечение */
+    
+    --text-main: #FFFFFF;     /* Основной текст */
+    --text-muted: #82869E;    /* Второстепенный текст */
+
+    /* Размеры и сетка сцены */
+    --screen-width: 1920px;
+    --screen-height: 1080px;
+    --gap: 20px;              /* Расстояние между панелями */
+    --padding: 20px;          /* Внутренние отступы от краев экрана */
+    --radius: 12px;           /* Скругление углов всех панелей */
+}
+
+/* Глобальный сброс браузерных стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased; /* Делает шрифты более четкими */
+}
+
+/* Настройка фона и запрет прокрутки */
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    overflow: hidden; /* Строго убираем скроллы для OBS */
+    width: 100vw;
+    height: 100vh;
+}

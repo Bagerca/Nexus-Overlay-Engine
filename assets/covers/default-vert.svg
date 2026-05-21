@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 240" width="160" height="240">
+  <rect width="160" height="240" fill="#181a25"/>
+  <rect x="10" y="10" width="140" height="220" fill="none" stroke="#212336" stroke-width="2" stroke-dasharray="10 5"/>
+  <circle cx="80" cy="100" r="30" fill="#00AAFF" fill-opacity="0.2"/>
+  <path d="M60 100 Q80 80 100 100 Q100 120 80 120 Q60 120 60 100" fill="none" stroke="#00AAFF" stroke-width="3"/>
+  <circle cx="70" cy="100" r="4" fill="#00AAFF"/> <circle cx="90" cy="100" r="4" fill="#00AAFF"/>
+  <text x="50%" y="160" font-family="sans-serif" font-size="14" font-weight="bold" fill="#82869E" text-anchor="middle" letter-spacing="1">NO GAME</text>
+  <text x="50%" y="180" font-family="sans-serif" font-size="10" fill="#4a4d63" text-anchor="middle">AWAITING SIGNAL</text>
+</svg>

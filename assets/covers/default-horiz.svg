@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240">
+  <rect width="380" height="240" fill="#181a25"/>
+  <rect x="10" y="10" width="360" height="220" fill="none" stroke="#212336" stroke-width="2" stroke-dasharray="15 10"/>
+  <path d="M160 120 L190 90 L220 120 L190 150 Z" fill="#00AAFF" fill-opacity="0.1" stroke="#00AAFF" stroke-width="2"/>
+  <text x="50%" y="130" font-family="sans-serif" font-size="20" font-weight="bold" fill="#82869E" text-anchor="middle" letter-spacing="2">NO SIGNAL</text>
+</svg>
